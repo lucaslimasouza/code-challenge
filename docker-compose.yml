@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: code_challenge_rails
+    ports:
+      - "${PORT}:${PORT}"
+    user: "${UID}:${GID}"
+    volumes:
+      - ./app:/app
+    command: rails server -b 0.0.0.0
+    environment:
+      PORT: ${PORT}
+      URL: ${URL}
+    stdin_open: true
+    tty: true
+

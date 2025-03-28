@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :books do
       member do
         # TODO: Implement this endpoint
-        # post 'reserve'
+        post 'reserve'
       end
     end
   end

@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_17_193907) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_28_214838) do
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "author"
     t.string "isbn"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.index ["title", "author", "status"], name: "index_books_on_title_and_author_and_status"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "book_id"
+    t.index ["book_id"], name: "index_reservations_on_book_id"
   end
 
 end
